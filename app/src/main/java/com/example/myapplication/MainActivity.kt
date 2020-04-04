@@ -1,20 +1,38 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.myapplication.service.CleanAceService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
 
+        val TAG = javaClass.simpleName
+        val cleanAceService = CleanAceService.instance
+        val signInCall = cleanAceService.signIn()
+        signInCall.enqueue(object : Callback<SignInResponse> {
+            override fun onFailure(call: Call<SignInResponse>?,
+                                   t: Throwable?) {
+                Log.i(TAG, "Call to ${call?.request()?.url()} " +
+                        "failed with ${t.toString()}")
+            }
+            override fun onResponse(call: Call<SignInResponse>?, response: Response<SignInResponse>?) {
+                Log.i(TAG, "Got response with status code " +
+                        "${response?.code()} and message " +
+                        "${response?.message()}")
+                val body = response?.body()
+                Log.i(TAG, "Response body = $body")
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

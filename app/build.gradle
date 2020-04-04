@@ -14,7 +14,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "API_BASE_URL", "\"http://intellifarms.com.ng/api/\"")
     }
 
     buildTypes {
@@ -35,6 +34,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'
