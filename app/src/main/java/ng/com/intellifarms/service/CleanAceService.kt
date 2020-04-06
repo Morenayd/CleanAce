@@ -1,8 +1,8 @@
-package com.example.myapplication.service
+package ng.com.intellifarms.service
 
-import com.example.myapplication.CreateOrderResponse
-import com.example.myapplication.SignInRequest
-import com.example.myapplication.SignInResponse
+import ng.com.intellifarms.CreateOrderResponse
+import ng.com.intellifarms.SignInRequest
+import ng.com.intellifarms.SignInResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -23,7 +23,8 @@ interface CleanAceService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-            retrofit.create<CleanAceService>(CleanAceService::class.java)
+            retrofit.create<CleanAceService>(
+                CleanAceService::class.java)
         }
     }
 }

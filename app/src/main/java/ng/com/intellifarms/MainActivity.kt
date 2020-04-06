@@ -1,11 +1,11 @@
-package com.example.myapplication
+package ng.com.intellifarms
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.example.myapplication.service.CleanAceService
+import ng.com.intellifarms.service.CleanAceService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
