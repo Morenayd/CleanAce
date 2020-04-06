@@ -20,6 +20,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/fragment_first" />
+    <include layout="@layout/fragment_second" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
