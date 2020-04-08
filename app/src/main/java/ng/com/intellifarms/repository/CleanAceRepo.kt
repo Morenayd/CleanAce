@@ -1,15 +1,15 @@
-package com.example.myapplication.repository
+package ng.com.intellifarms.repository
 
-import com.example.myapplication.SignInRequest
-import com.example.myapplication.SignInResponse
-import com.example.myapplication.service.CleanAceService
+import ng.com.intellifarms.SignInRequest
+import ng.com.intellifarms.SignInResponse
+import ng.com.intellifarms.service.CleanAceService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class CleanAceRepo(private val cleanAceService: CleanAceService) {
 
-    fun signIn(signInRequest: SignInRequest, callback: (SignInResponse?) -> Unit) {
+    fun signIn(signInRequest: SignInRequest, callback: (SignInResponse?) -> Result<*>) {
         val signInCall = cleanAceService.signIn(signInRequest)
         signInCall.enqueue(object: Callback<SignInResponse> {
             override fun onFailure(call: Call<SignInResponse>, t: Throwable) {

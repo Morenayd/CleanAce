@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.example.myapplication.service.CleanAceService
+import ng.com.intellifarms.service.CleanAceService
 import kotlinx.android.synthetic.main.fragment_second.*
+import ng.com.intellifarms.R
+import ng.com.intellifarms.SignInResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val TAG = javaClass.simpleName
-        val signInRequest: SignInRequest =
         val cleanAceService = CleanAceService.instance
         val signInCall = cleanAceService.signIn()
         signInCall.enqueue(object : Callback<SignInResponse> {
@@ -41,9 +42,6 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
-    }
-    fun signIn(view: View) {
-        
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
