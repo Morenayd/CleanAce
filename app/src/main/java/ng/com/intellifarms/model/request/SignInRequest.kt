@@ -1,4 +1,4 @@
-package ng.com.intellifarms
+package ng.com.intellifarms.model.request
 
 data class SignInRequest(
     val type: String,

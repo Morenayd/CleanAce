@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import ng.com.intellifarms.service.networkUtils.LoadingStatus
+import ng.com.intellifarms.networkUtils.LoadingStatus
 
 abstract class BaseViewModel : ViewModel() {
 

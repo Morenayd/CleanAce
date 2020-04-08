@@ -1,4 +1,4 @@
-package ng.com.intellifarms
+package ng.com.intellifarms.model.request
 
 data class SignUpRequest (
     val username: String,

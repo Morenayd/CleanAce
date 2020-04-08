@@ -1,8 +1,8 @@
-package ng.com.intellifarms.service
+package ng.com.intellifarms.data.source.remote.service
 
-import ng.com.intellifarms.CreateOrderResponse
-import ng.com.intellifarms.SignInRequest
-import ng.com.intellifarms.SignInResponse
+import ng.com.intellifarms.model.response.CreateOrderResponse
+import ng.com.intellifarms.model.request.SignInRequest
+import ng.com.intellifarms.model.response.SignInResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

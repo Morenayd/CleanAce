@@ -1,8 +1,8 @@
 package ng.com.intellifarms.repository
 
-import ng.com.intellifarms.SignInRequest
-import ng.com.intellifarms.SignInResponse
-import ng.com.intellifarms.service.CleanAceService
+import ng.com.intellifarms.model.request.SignInRequest
+import ng.com.intellifarms.model.response.SignInResponse
+import ng.com.intellifarms.data.source.remote.service.CleanAceService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

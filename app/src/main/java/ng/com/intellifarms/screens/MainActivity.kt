@@ -5,11 +5,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import ng.com.intellifarms.service.CleanAceService
-import kotlinx.android.synthetic.main.fragment_second.*
+import ng.com.intellifarms.data.source.remote.service.CleanAceService
 import ng.com.intellifarms.R
-import ng.com.intellifarms.SignInResponse
+import ng.com.intellifarms.model.response.SignInResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

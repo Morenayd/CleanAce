@@ -1,4 +1,4 @@
-package ng.com.intellifarms.service.networkUtils
+package ng.com.intellifarms.networkUtils
 
 sealed class LoadingStatus {
 

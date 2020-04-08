@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="ng.com.intellifarms.SignUpFragment"
+        android:name="ng.com.intellifarms.screens.SignUpFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/1">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="ng.com.intellifarms.SignInFragment"
+        android:name="ng.com.intellifarms.screens.SignInFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_first">
 
