@@ -23,7 +23,7 @@ abstract class CleanAceDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CleanAceDatabase::class.java,
-                    "crypto_database"
+                    "cleanace_database"
                 ).build()
                 INSTANCE = instance
                 return instance
