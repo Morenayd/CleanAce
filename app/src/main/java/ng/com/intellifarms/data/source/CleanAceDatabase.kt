@@ -7,13 +7,13 @@ import androidx.room.RoomDatabase
 import ng.com.intellifarms.SignInResponse
 
 @Database(entities = [SignInResponse::class], exportSchema = false, version = 1)
-abstract class CryptoRoomDatabase : RoomDatabase() {
+abstract class CleanAceDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: CryptoRoomDatabase? = null
+        private var INSTANCE: CleanAceDatabase? = null
 
-        fun getDatabase(context: Context): CryptoRoomDatabase {
+        fun getDatabase(context: Context): CleanAceDatabase {
             val tempInstance =
                 INSTANCE
             if (tempInstance != null) {
@@ -22,7 +22,7 @@ abstract class CryptoRoomDatabase : RoomDatabase() {
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    CryptoRoomDatabase::class.java,
+                    CleanAceDatabase::class.java,
                     "crypto_database"
                 ).build()
                 INSTANCE = instance
