@@ -6,27 +6,76 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import ng.com.intellifarms.R
+import ng.com.intellifarms.databinding.FragmentSignInBinding
+import ng.com.intellifarms.model.request.SignInRequest
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SignInFragment : Fragment() {
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
+        lateinit var viewModelFactory: ViewModelProvider.Factory
+
+        private lateinit var signInViewModel: SignInViewModel
+
+        lateinit var binding: FragmentSignInBinding
+
+        private var overrideNavigationFlow = false
+
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        ): View? {
+            binding = FragmentSignInBinding.inflate(inflater)
+            binding.lifecycleOwner = this
+            return binding.root
+        }
+
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+
+            // ViewModel setup
+            signInViewModel = ViewModelProviders.of(this, viewModelFactory).get(SignInViewModel::class.java)
+            //binding. = signInViewModel
+
+            binding.signInButton.setOnClickListener {
+                if (validateTextLayouts(binding.usernameEditText, binding.passwordEditText)) {
+                    signInViewModel.signIn(
+                        SignInRequest(
+                            binding.usernameEditText.text.toString(),
+                            binding.passwordEditText.text.toString()
+                        )
+                    )
+                    findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
+                }
+            }
+
+        }
+
+    fun validateTextLayouts(vararg textLayouts: TextView): Boolean {
+        clearTextLayoutError(*textLayouts)
+        for (textLayout in textLayouts) {
+            if (!textLayout.validate()) return false
+        }
+        return true
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    fun clearTextLayoutError(vararg textLayouts: TextView) {
+        for (textLayout in textLayouts) textLayout.error = null
+    }
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
+    fun TextView.isEmpty() = text.isNullOrEmpty()
+
+    fun TextView.validate(errorMessage: String = "This Field is required"): Boolean {
+        if (!isEmpty()) return true
+        error = errorMessage
+        return false
     }
 }

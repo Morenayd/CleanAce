@@ -3,7 +3,9 @@ package ng.com.intellifarms.data.source.remote.service
 import ng.com.intellifarms.model.response.CreateOrderResponse
 import ng.com.intellifarms.model.request.SignInRequest
 import ng.com.intellifarms.model.response.SignInResponse
+import ng.com.intellifarms.networkUtils.BaseAPIResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
@@ -12,7 +14,8 @@ import retrofit2.http.POST
 interface CleanAceService {
 
     @POST("/read.php")
-    fun signIn(@Body signInRequest: SignInRequest) : Call<SignInResponse>
+    fun signIn(@Body signInRequest: SignInRequest): Response<BaseAPIResponse<SignInResponse>>
+
     @POST("/insert.php")
     fun createOrder(): Call<CreateOrderResponse>
 
